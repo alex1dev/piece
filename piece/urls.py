@@ -1,8 +1,8 @@
 from django.contrib import admin
-from django.urls import path
+from django.conf.urls import url
 from example import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('main.html', views.main ),
+    url(r'^admin/', admin.site.urls),
+    url(r'^main', views.main),
 ]

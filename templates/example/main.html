@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
-<title>Hardcoded by wol4ik</title>
+<title>Magnum Tourism</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -15,14 +15,15 @@ p {line-height: 2}
     background-position: center;
     background-size: cover;
 }
-.bgimg {background-image: url("static/images/bg.jpg")}
-.bgimg2 {background-image: url("static/images/slide01.jpg")}
+.bgimg {background-image: url("/static/images/bg.jpg");}
+.bgimg2 {background-image: url("/static/images/slide01.jpg");}
 </style>
 <body>
 
 <!-- Header / Home-->
 <header class="w3-display-container w3-wide bgimg w3-grayscale-min" id="home">
   <div class="w3-display-middle w3-text-white w3-center">
+
     <h1 class="w3-jumbo">EXPLORE!</h1>
     <h2>Try to find the idea of...</h2>
     <h2><b>magnum tourism</b></h2>
@@ -38,13 +39,12 @@ p {line-height: 2}
     <a href="#rsvp" style="width:25%" class="w3-bar-item w3-button w3-hover-white">Contact</a>
   </div>
 </div>
-
-<!-- About / Jane And John -->
+<!-- about -->
 <div class="w3-container w3-padding-64 w3-black w3-grayscale-min" id="us">
   <div class="w3-content">
     <h1 class="w3-center w3-text-grey"><b>Mountines & Snow</b></h1>
     <img class="w3-round w3-grayscale-min" src="/static/images/slide04.jpg" style="width:100%;margin:32px 0">
-    <p><i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</i>
+    <p><i>This is just an example of web-site using Bootstrap + Django. If you are insterested please refer to <a href="https://norvux.pythonanywhere.com">norvux.protonmail.com</a>. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</i>
     </p><br>
     <p class="w3-center"><a href="#wedding" class="w3-button w3-black w3-round w3-padding-large w3-large">North</a></p>
   </div>
@@ -54,14 +54,14 @@ p {line-height: 2}
 <div class="w3-display-container bgimg2">
   <div class="w3-display-middle w3-text-white w3-center">
     <h1 class="w3-jumbo">Are You Ready</h1><br>
-    <h2>to the adventures?</h2>
+    <h2>for the adventures?</h2>
   </div>
 </div>
 
-<!-- Wedding information -->
+<!-- North -->
 <div class="w3-container w3-padding-64 w3-black w3-grayscale-min w3-center" id="wedding">
   <div class="w3-content">
-    <h1 class="w3-text-grey"><b>THE North</b></h1>
+    <h1 class="w3-text-grey"><b>The North</b></h1>
     <img class="w3-round-large w3-grayscale-min" src="/static/images/slide05.jpg" style="width:100%;margin:64px 0">
     <div class="w3-row">
       <div class="w3-half">
@@ -79,7 +79,7 @@ p {line-height: 2}
 </div>
 
 <!-- RSVP section -->
-<div class="w3-container w3-padding-64 w3-white w3-center w3-wide" id="rsvp">
+<div class="w3-container w3-padding-64 w3-black w3-center w3-wide" id="rsvp">
   <h1>HOPE YOU CAN MAKE IT!</h1>
   <p class="w3-large">Kindly Respond us</p>
   <p class="w3-xlarge">
@@ -88,33 +88,52 @@ p {line-height: 2}
 </div>
 
 <!-- RSVP modal -->
-<div id="id01" class="w3-modal">
-  <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="padding:32px;max-width:600px">
-    <div class="w3-container w3-white w3-center">
-      <h1 class="w3-wide">CONTACT</h1>
-      <p>We really hope you write us</p>
-      <form>
-        <input class="w3-input w3-border" type="text" placeholder="Type..." name="name">
-      </form>
-      <p><i>Sincerely, Wol4ik</i></p>
-      <div class="w3-row">
+<div id="id01" class="w3-modal" >
+  <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="padding:32px;max-width:600px; background-color: rgba(0, 0, 0, 0.5)">
+    <div class="w3-container w3-center" >
+      <h1 class="w3-wide" style="color:white;">CONTACT</h1>
+      <p style="color:white;">We really hope you write us</p>
+
+
+      <form method='post'>
+        {% csrf_token %}
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          
+
+          <div class="form-group">
+              <input class="w3-input w3-border" type="text" name="email" value="" placeholder="Email"/>
+          </div>
+
+          <div class='form-group'>
+              <input class="w3-input w3-border" type="text" name="subject" placeholder="Subject">
+          </div>
+
+          <div class="form-group">
+              <textarea class="w3-input w3-border" type="text" name="message" value="" rows="6" placeholder="Message">
+              </textarea>
+          </div>
+         </div>
+        <div class="w3-row form-actions">
         <div class="w3-half">
-          <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-block w3-green">Send</button>
+          <button  type="Submit" class="w3-button w3-block w3-green">Submit</button>
         </div>
         <div class="w3-half">
-          <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-block w3-red">Cancel</button>
+          <a href="main.html"><button  type="button" class="w3-button w3-block w3-red">Cancel</button></a>
         </div>
       </div>
-    </div>
-  </div>
-</div>
 
+
+      </form>
+
+      
+    </div>
+  
 <!-- Footer -->
-<footer class="w3-center w3-black w3-padding-16" style='font-size: 20px;'>
-  <p class="m-0 text-center text-white">Nord Dev &copy; <br/> 
+<footer class="w3-center ">
+  <p class="m-0 text-center " style="color:white;font-size: 16px; ">        Nord Dev &copy; <br/> 
           This is just an example of web-site using django.<br/>
           For further details please contact me at<br/>
-          alexander.w.jv@gmail.com <br/><br/>2018</p>
+          norvux@protonmail.com or refer to <a href="https://nordev.pythonanywhere.com"> nordev.pythonanywhere.com </a> <br/><br/>2018</p>
 </footer>
 <div class="w3-hide-small" style="margin-bottom:32px"> </div>
 
